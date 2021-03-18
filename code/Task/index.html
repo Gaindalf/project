@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<div class="invisible">
+    <p>привет!</p>
+</div>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field" v-model="search">
+                    <button class="btn-search" type="submit" @click="searchItem()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" onclick="location.hash ='modalWindow'">Корзина: {{
+                    numberOfItems() }}</button>
+            </div>
+        </header>
+        <main>
+            <products :products="products" :img="imgCatalog" @add-product="addProduct"></products>
+            <!--
+            <div class="products">
+                <div class="product-item" v-for="product of products" :key="product.id_product"
+                    :id="product.id_product">
+                    <div class="desc">
+                        <h3>{{product.product_name}}</h3>
+                        <p>{{product.price}} $</p>
+                        <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                    </div>
+                    <img :src="imgCatalog" alt="Some img">
+                </div>
+                <div class="ifNothingFound invisible">
+                    <h3 class="ifNothingFoundH3">Ничего не найдено</h3>
+                </div>
+            </div>
+            -->
+        </main>
+        <div id="modalWindow">
+            <div class="window">
+
+
+
+                <div class="products">
+                    <div class="ifBasketEmpty invisible">
+                        <h3 class="ifBasketEmptyH3">Корзина пустая</h3>
+                    </div>
+                    <cart :items="productsInBasket"></cart>
+                    <!--
+                    <div class="formForBasket-item" v-for="item of productsInBasket" :key="item.id_product">
+                        <div class="desc">
+                            <h3>{{item.product_name}}</h3>
+                            <p>{{item.price}} $</p>
+                            <input type='number' min=1 :value="item.quantity" size=6 @click="showQuantity(item)"
+                                v-model="item.quantity">
+                            <p class="getAllPrice">{{ showQuantity(item) }}</p>
+                            <button class="delete-btn" @click="deleteItemFromBasket(item)">X</button>
+                        </div>
+                    </div>
+-->
+                </div>
+
+                <div class='sum'>
+                    <p id="allSum">Общая сумма: {{ AllSum() }} $</p>
+                    <button class="buy-btn-in-basket">Купить</button>
+                </div>
+                <div class="forButtonInBasket"><button onclick="location.hash ='close_window'"> Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="js/productComponent.js" defer></script>
+    <script src="js/basketComponent.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>
+
+<!--<div class="cart-item" data-id="${this.id_product}">-->
+<!--<div class="product-bio">-->
+<!--<img src="${this.img}" alt="Some image">-->
+<!--<div class="product-desc">-->
+<!--<p class="product-title">${this.product_name}</p>-->
+<!--<p class="product-quantity">Quantity: ${this.quantity}</p>-->
+<!--<p class="product-single-price">$${this.price} each</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="right-block">-->
+<!--<p class="product-price">${this.quantity*this.price}</p>-->
+<!--<button class="del-btn" data-id="${this.id_product}">&times;</button>-->
+<!--</div>-->
+<!--</div>-->
